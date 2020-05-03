@@ -160,7 +160,7 @@ Piece Piezas::gameState()
     // highest scoring team wins the match
     if (max_x > max_o)
         return X;
-    if (max_o > max_x)
+    else if (max_o > max_x)
         return O;
     return Blank; // returns blank if tie.
 }
