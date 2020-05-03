@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/VioletInferno/Piezas.svg?branch=master)](https://travis-ci.org/VioletInferno/Piezas)
+
 # Piezas
 
 ## Associated Enumerated Types
