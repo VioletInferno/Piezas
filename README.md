@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/VioletInferno/Piezas.svg?branch=master)](https://travis-ci.org/VioletInferno/Piezas)
+[![Build Status](https://travis-ci.org/VioletInferno/Piezas.svg?branch=master)](https://travis-ci.org/VioletInferno/Piezas) [![Coverage Status](https://coveralls.io/repos/github/VioletInferno/Piezas/badge.svg?branch=master)](https://coveralls.io/github/VioletInferno/Piezas?branch=master)
 
 # Piezas
 
