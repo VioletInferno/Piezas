@@ -22,6 +22,14 @@
 **/
 Piezas::Piezas()
 {
+    board.resize(BOARD_ROWS);  // resize rows
+    for (int row = 0; row < (int) board.size(); row++)
+    {
+        board[row].resize(BOARD_COLS);  // resize cols
+        for (int col = 0; col < (int) board[row].size(); col++)
+            board[row][col] = Blank;  // set all board tiles to blank
+    }
+    turn = X;  // specify that X goes first
 }
 
 /**
@@ -30,6 +38,9 @@ Piezas::Piezas()
 **/
 void Piezas::reset()
 {
+    for (int row = 0; row < (int) board.size(); row++)
+        for (int col = 0; col < (int) board[row].size(); col++)
+            board[row][col] = Blank;  // reset board tiles to blank
 }
 
 /**
@@ -42,6 +53,29 @@ void Piezas::reset()
 **/ 
 Piece Piezas::dropPiece(int column)
 {
+    // this is the piece that we will drop on the board
+    Piece cur_turn = turn;
+
+    // toggle the turn
+    if (turn == O)
+        turn = X;
+    else
+        turn = O;
+
+    // check if we're out of bounds
+    if (column > BOARD_COLS || column < 0)
+        return Invalid;
+
+    // drop the piece
+    for (int row = 0; row < (int) board.size(); row++)
+    {
+        if (board[row][column] == Blank)
+        {
+            board[row][column] = cur_turn;
+            return board[row][column];
+        }
+    }
+
     return Blank;
 }
 
@@ -51,7 +85,11 @@ Piece Piezas::dropPiece(int column)
 **/
 Piece Piezas::pieceAt(int row, int column)
 {
-    return Blank;
+    // check if out of bounds
+    if (row > BOARD_ROWS || row < 0 || column > BOARD_COLS || column < 0)
+        return Invalid;
+
+    return board[row][column];
 }
 
 /**
@@ -65,5 +103,67 @@ Piece Piezas::pieceAt(int row, int column)
 **/
 Piece Piezas::gameState()
 {
-    return Blank;
+    // highest scores for X and O
+    int max_x = 0, max_o = 0;
+
+    // current scores for X and O
+    int cur_x = 0, cur_o = 0;
+
+    // check horizontally
+    for (int row = 0; row < (int) board.size(); row++)
+    {
+        for (int col = 0; col < (int) board[row].size(); col++)
+        {
+            if (board[row][col] == Blank)  // if tile is blank, our game isn't over
+                return Invalid;
+            else if (board[row][col] == X) 
+            {
+                cur_x++;
+                if (cur_x > max_x)
+                    max_x = cur_x;
+                cur_o = 0;
+            }
+            else if (board[row][col] == O)
+            {
+                cur_o++;
+                if (cur_o > max_o)
+                    max_o = cur_o;
+                cur_x = 0;
+            }
+        }
+    }
+
+    // check vertically
+    for (int col = 0; col < (int) board[0].size(); col++)
+    {
+        for (int row = 0; row < (int) board.size(); row++)
+        {
+            if (board[row][col] == Blank)  // if tile is blank, game isn't over.
+                return Invalid;
+            else if (board[row][col] == X)
+            {
+                cur_x++;
+                if (cur_x > max_x)
+                    max_x = cur_x;
+                cur_o = 0;
+            }
+            else if (board[row][col] == O)
+            {
+                cur_o++;
+                if (cur_o > max_o)
+                    max_o = cur_o;
+                cur_x = 0;
+            }
+        }
+    }
+
+    // check winner. return blank if tie
+    if (max_x == max_o)
+        return Blank;
+
+    // highest scoring team wins the match
+    if (max_x > max_o)
+        return X;
+    if (max_o > max_x)
+        return O;
 }
