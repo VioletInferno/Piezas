@@ -157,13 +157,10 @@ Piece Piezas::gameState()
         }
     }
 
-    // check winner. return blank if tie
-    if (max_x == max_o)
-        return Blank;
-
     // highest scoring team wins the match
     if (max_x > max_o)
         return X;
     if (max_o > max_x)
         return O;
+    return Blank; // returns blank if tie.
 }
