@@ -113,6 +113,8 @@ Piece Piezas::gameState()
     // check horizontally
     for (int row = 0; row < (int) board.size(); row++)
     {
+        cur_x = 0;
+        cur_o = 0;
         for (int col = 0; col < (int) board[row].size(); col++)
         {
             if (board[row][col] == Blank)  // if tile is blank, our game isn't over
@@ -137,6 +139,8 @@ Piece Piezas::gameState()
     // check vertically
     for (int col = 0; col < (int) board[0].size(); col++)
     {
+        cur_x = 0;
+        cur_o = 0;
         for (int row = 0; row < (int) board.size(); row++)
         {
             if (board[row][col] == Blank)  // if tile is blank, game isn't over.
