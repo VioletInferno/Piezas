@@ -23,11 +23,17 @@ TEST(PiezasTest, sanityCheck)
 TEST(PiezasTest, isBoardEmpty)
 {
 	Piezas b;  // b for board. Creating a Piezas object initialzes the constructor.
-	ASSERT_EQ(b.pieceAt(0,0), Blank);
+	ASSERT_EQ(b.pieceAt(0, 0), Blank);
+}
+
+TEST(PiezasTest, isBoardEmpty2)
+{
+	Piezas b;
+	ASSERT_EQ(b.pieceAt(2, 3), Blank);
 }
 
 // Test reset()
-TEST(PiezasTest, resetTest)
+TEST(PiezasTest, doesResetClearBoard)
 {
 	Piezas b;
 	b.dropPiece(0);
@@ -35,5 +41,116 @@ TEST(PiezasTest, resetTest)
 	b.dropPiece(2);
 	b.dropPiece(3);
 	b.reset();
-	ASSERT_EQ(Blank, b.pieceAt(0,0));
+	ASSERT_EQ(b.pieceAt(0, 0), Blank);
+}
+
+TEST(PiezasTest, doesTogglingWorkAfterReset)
+{
+	Piezas b;
+	b.dropPiece(0);
+	b.reset();
+	ASSERT_EQ(b.dropPiece(0), X);
+}
+
+// Test dropPiece()
+TEST(PiezasTest, dropX)
+{
+	Piezas b;
+	ASSERT_EQ(b.dropPiece(0), X);  // X should always go first
+}
+
+Test(PiezasTest, dropO)
+{
+	Piezas b;
+	b.dropPiece(0);
+	ASSERT_EQ(b.dropPiece(0), O);  // O should always follow after X
+}
+
+Test(PiezasTest, areTurnsToggling1)
+{
+	Piezas b;
+	b.dropPiece(0);
+	ASSERT_EQ(b.dropPiece(0), O);
+}
+
+Test(PiezasTest, areTurnsToggling2)
+{
+	Piezas b;
+	b.dropPiece(0);
+	b.dropPiece(0);
+	ASSERT_EQ(b.dropPiece(0), X);
+}
+
+Test(PiezasTest, areFullColumnsHandledCorrectly)
+{
+	Piezas b;
+	b.dropPiece(0);
+	b.dropPiece(0);
+	b.dropPiece(0);
+	ASSERT_EQ(b.dropPiece(0), Blank);
+}
+
+Test(PiezasTest, arePiecesDroppedOutOfBoundsHandledCorrectly)
+{
+	Piezas b;
+	ASSERT_EQ(b.dropPiece(11), Invalid);
+}
+
+Test(PiezasTest, arePiecesDroppedOutOfBoundsHandledCorrectly2)
+{
+	Piezas b;
+	ASSERT_EQ(b.dropPiece(-1), Invalid);
+}
+
+Test(PiezasTest, doesPlayerLoseTurnWhenDroppingOutOfBounds)
+{
+	Piezas b;
+	b.dropPiece(11);
+	ASSERT_EQ(b.dropPiece(0), O);
+}
+
+// Test pieceAt()
+Test(PiezasTest, isOutOfBounds)
+{
+	Piezas b;
+	ASSERT_EQ(b.pieceAt(-1, -1), Invalid);
+}
+
+Test(PiezasTest, isOutOfBounds2)
+{
+	Piezas b;
+	ASSERT_EQ(b.pieceAt(5, 5), Invalid);
+}
+
+Test(PiezasTest, isOutOfBounds3)
+{
+	Piezas b;
+	ASSERT_EQ(b.pieceAt(0, -1), Invalid);
+}
+
+Test(PiezasTest, isOutOfBounds4)
+{
+	Piezas b;
+	ASSERT_EQ(b.pieceAt(-1, -2), Invalid);
+}
+
+Test(PiezasTest, isOutOfBounds5)
+{
+	Piezas b;
+	ASSERT_EQ(b.pieceAt(0, 5), Invalid);
+}
+
+Test(PiezasTest, testAtX)
+{
+	Piezas b;
+	b.dropPiece(0);
+	ASSERT_EQ(b.pieceAt(0, 0), X);
+}
+
+Test(PiezasTest, testAtO)
+{
+	Piezas b;
+	b.dropPiece(0);
+	b.dropPiece(0);
+	ASSERT_EQ(b.pieceAt(1, 0), O);
 }
