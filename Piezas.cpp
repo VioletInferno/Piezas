@@ -143,9 +143,9 @@ Piece Piezas::gameState()
         cur_o = 0;
         for (int row = 0; row < (int) board.size(); row++)
         {
-            if (board[row][col] == Blank)  // if tile is blank, game isn't over.
-                return Invalid;
-            else if (board[row][col] == X)
+            //if (board[row][col] == Blank)  ** Removed due to this control structure never 
+            //    return Invalid;            ** firing off if we had a blank tile when checking horizontally
+            if (board[row][col] == X)
             {
                 cur_x++;
                 if (cur_x > max_x)
