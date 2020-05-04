@@ -154,3 +154,22 @@ TEST(PiezasTest, testAtO)
 	b.dropPiece(0);
 	ASSERT_EQ(b.pieceAt(1, 0), O);
 }
+
+// Test gameState()
+TEST(PiezasTest, isTie)
+{
+	Piezas b;
+	b.dropPiece(0);
+	b.dropPiece(0);
+	b.dropPiece(0);
+	b.dropPiece(1);
+	b.dropPiece(1);
+	b.dropPiece(1);
+	b.dropPiece(2);
+	b.dropPiece(2);
+	b.dropPiece(2);
+	b.dropPiece(3);
+	b.dropPiece(3);
+	b.dropPiece(3);
+	ASSERT_EQ(b.gameState(), Blank);
+}
