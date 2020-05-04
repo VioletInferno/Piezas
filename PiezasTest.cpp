@@ -59,21 +59,21 @@ TEST(PiezasTest, dropX)
 	ASSERT_EQ(b.dropPiece(0), X);  // X should always go first
 }
 
-Test(PiezasTest, dropO)
+TEST(PiezasTest, dropO)
 {
 	Piezas b;
 	b.dropPiece(0);
 	ASSERT_EQ(b.dropPiece(0), O);  // O should always follow after X
 }
 
-Test(PiezasTest, areTurnsToggling1)
+TEST(PiezasTest, areTurnsToggling1)
 {
 	Piezas b;
 	b.dropPiece(0);
 	ASSERT_EQ(b.dropPiece(0), O);
 }
 
-Test(PiezasTest, areTurnsToggling2)
+TEST(PiezasTest, areTurnsToggling2)
 {
 	Piezas b;
 	b.dropPiece(0);
@@ -81,7 +81,7 @@ Test(PiezasTest, areTurnsToggling2)
 	ASSERT_EQ(b.dropPiece(0), X);
 }
 
-Test(PiezasTest, areFullColumnsHandledCorrectly)
+TEST(PiezasTest, areFullColumnsHandledCorrectly)
 {
 	Piezas b;
 	b.dropPiece(0);
@@ -90,19 +90,19 @@ Test(PiezasTest, areFullColumnsHandledCorrectly)
 	ASSERT_EQ(b.dropPiece(0), Blank);
 }
 
-Test(PiezasTest, arePiecesDroppedOutOfBoundsHandledCorrectly)
+TEST(PiezasTest, arePiecesDroppedOutOfBoundsHandledCorrectly)
 {
 	Piezas b;
 	ASSERT_EQ(b.dropPiece(11), Invalid);
 }
 
-Test(PiezasTest, arePiecesDroppedOutOfBoundsHandledCorrectly2)
+TEST(PiezasTest, arePiecesDroppedOutOfBoundsHandledCorrectly2)
 {
 	Piezas b;
 	ASSERT_EQ(b.dropPiece(-1), Invalid);
 }
 
-Test(PiezasTest, doesPlayerLoseTurnWhenDroppingOutOfBounds)
+TEST(PiezasTest, doesPlayerLoseTurnWhenDroppingOutOfBounds)
 {
 	Piezas b;
 	b.dropPiece(11);
@@ -110,44 +110,44 @@ Test(PiezasTest, doesPlayerLoseTurnWhenDroppingOutOfBounds)
 }
 
 // Test pieceAt()
-Test(PiezasTest, isOutOfBounds)
+TEST(PiezasTest, isOutOfBounds)
 {
 	Piezas b;
 	ASSERT_EQ(b.pieceAt(-1, -1), Invalid);
 }
 
-Test(PiezasTest, isOutOfBounds2)
+TEST(PiezasTest, isOutOfBounds2)
 {
 	Piezas b;
 	ASSERT_EQ(b.pieceAt(5, 5), Invalid);
 }
 
-Test(PiezasTest, isOutOfBounds3)
+TEST(PiezasTest, isOutOfBounds3)
 {
 	Piezas b;
 	ASSERT_EQ(b.pieceAt(0, -1), Invalid);
 }
 
-Test(PiezasTest, isOutOfBounds4)
+TEST(PiezasTest, isOutOfBounds4)
 {
 	Piezas b;
 	ASSERT_EQ(b.pieceAt(-1, -2), Invalid);
 }
 
-Test(PiezasTest, isOutOfBounds5)
+TEST(PiezasTest, isOutOfBounds5)
 {
 	Piezas b;
 	ASSERT_EQ(b.pieceAt(0, 5), Invalid);
 }
 
-Test(PiezasTest, testAtX)
+TEST(PiezasTest, testAtX)
 {
 	Piezas b;
 	b.dropPiece(0);
 	ASSERT_EQ(b.pieceAt(0, 0), X);
 }
 
-Test(PiezasTest, testAtO)
+TEST(PiezasTest, testAtO)
 {
 	Piezas b;
 	b.dropPiece(0);
