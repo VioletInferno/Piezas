@@ -215,15 +215,15 @@ TEST(PiezasTest, isXWinnerVeritcal)
 	Piezas b;
 	b.dropPiece(3);
 	b.dropPiece(0);
+	b.dropPiece(2);
+	b.dropPiece(2);
+	b.dropPiece(3);
+	b.dropPiece(2);
 	b.dropPiece(3);
 	b.dropPiece(1);
-	b.dropPiece(3);
-	b.dropPiece(1);
-	b.dropPiece(1);
-	b.dropPiece(2);
-	b.dropPiece(2);
-	b.dropPiece(2);
 	b.dropPiece(0);
+	b.dropPiece(1);
+	b.dropPiece(1);
 	b.dropPiece(0);
 	ASSERT_EQ(b.gameState(), X);
 }

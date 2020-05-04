@@ -145,7 +145,7 @@ Piece Piezas::gameState()
         {
             if (board[row][col] == Blank)  // if tile is blank, game isn't over.
                 return Invalid;
-            if (board[row][col] == X)
+            else if (board[row][col] == X)
             {
                 cur_x++;
                 if (cur_x > max_x)
