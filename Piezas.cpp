@@ -41,6 +41,7 @@ void Piezas::reset()
     for (int row = 0; row < (int) board.size(); row++)
         for (int col = 0; col < (int) board[row].size(); col++)
             board[row][col] = Blank;  // reset board tiles to blank
+    turn = X;  // set turn back to X to ensure that X always goes first, even after a reset.
 }
 
 /**
