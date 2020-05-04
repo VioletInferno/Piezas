@@ -173,3 +173,57 @@ TEST(PiezasTest, isTie)
 	b.dropPiece(3);
 	ASSERT_EQ(b.gameState(), Blank);
 }
+
+TEST(PiezasTest, isXWinner)
+{
+	Piezas b;
+	b.dropPiece(0);
+	b.dropPiece(0);
+	b.dropPiece(1);
+	b.dropPiece(1);
+	b.dropPiece(2);
+	b.dropPiece(0);
+	b.dropPiece(3);
+	b.dropPiece(1);
+	b.dropPiece(2);
+	b.dropPiece(3);
+	b.dropPiece(3);
+	b.dropPiece(2);
+	ASSERT_EQ(b.gameState(), X);
+}
+
+TEST(PiezasTest, isOWinner)
+{
+	Piezas b;
+	b.dropPiece(0);
+	b.dropPiece(0);
+	b.dropPiece(1);
+	b.dropPiece(1);
+	b.dropPiece(2);
+	b.dropPiece(2);
+	b.dropPiece(0);
+	b.dropPiece(3);
+	b.dropPiece(1);
+	b.dropPiece(3);
+	b.dropPiece(2);
+	b.dropPiece(3);
+	ASSERT_EQ(b.gameState(), O);
+}
+
+TEST(PiezasTest, isGameStateIncomplete)
+{
+	Piezas b;
+	b.dropPiece(0);
+	b.dropPiece(0);
+	b.dropPiece(1);
+	b.dropPiece(0);
+	b.dropPiece(3);
+	b.dropPiece(3);
+	b.dropPiece(2);
+	b.dropPiece(2);
+	b.dropPiece(1);
+	b.dropPiece(1);
+	b.dropPiece(1);
+	b.dropPiece(0);
+	ASSERT_EQ(b.gameState(), Invalid);
+}
