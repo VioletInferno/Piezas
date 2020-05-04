@@ -240,8 +240,8 @@ TEST(PiezasTest, isOWinnerVeritcal)
 	b.dropPiece(3);
 	b.dropPiece(1);
 	b.dropPiece(2);
-	b.dropPiece(3);
 	b.dropPiece(2);
+	b.dropPiece(3);
 	b.dropPiece(3);
 	ASSERT_EQ(b.gameState(), O);
 }
