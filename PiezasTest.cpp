@@ -174,7 +174,7 @@ TEST(PiezasTest, isTie)
 	ASSERT_EQ(b.gameState(), Blank);
 }
 
-TEST(PiezasTest, isXWinner)
+TEST(PiezasTest, isXWinnerHorizontal)
 {
 	Piezas b;
 	b.dropPiece(0);
@@ -192,7 +192,7 @@ TEST(PiezasTest, isXWinner)
 	ASSERT_EQ(b.gameState(), X);
 }
 
-TEST(PiezasTest, isOWinner)
+TEST(PiezasTest, isOWinnerHorizontal)
 {
 	Piezas b;
 	b.dropPiece(0);
@@ -206,6 +206,42 @@ TEST(PiezasTest, isOWinner)
 	b.dropPiece(1);
 	b.dropPiece(3);
 	b.dropPiece(2);
+	b.dropPiece(3);
+	ASSERT_EQ(b.gameState(), O);
+}
+
+TEST(PiezasTest, isXWinnerVeritcal)
+{
+	Piezas b;
+	b.dropPiece(3);
+	b.dropPiece(0);
+	b.dropPiece(3);
+	b.dropPiece(1);
+	b.dropPiece(3);
+	b.dropPiece(1);
+	b.dropPiece(1);
+	b.dropPiece(2);
+	b.dropPiece(2);
+	b.dropPiece(2);
+	b.dropPiece(0);
+	b.dropPiece(0);
+	ASSERT_EQ(b.gameState(), X);
+}
+
+TEST(PiezasTest, isOWinnerVeritcal)
+{
+	Piezas b;
+	b.dropPiece(0);
+	b.dropPiece(1);
+	b.dropPiece(2);
+	b.dropPiece(1);
+	b.dropPiece(3);
+	b.dropPiece(1);
+	b.dropPiece(2);
+	b.dropPiece(2);
+	b.dropPiece(3);
+	b.dropPiece(0);
+	b.dropPiece(0);
 	b.dropPiece(3);
 	ASSERT_EQ(b.gameState(), O);
 }
