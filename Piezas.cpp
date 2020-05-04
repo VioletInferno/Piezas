@@ -148,14 +148,14 @@ Piece Piezas::gameState()
             if (board[row][col] == X)
             {
                 cur_x++;
-                if (cur_x > max_x)
+                if (cur_x >= max_x)
                     max_x = cur_x;
                 cur_o = 0;
             }
             else if (board[row][col] == O)
             {
                 cur_o++;
-                if (cur_o > max_o)
+                if (cur_o >= max_o)
                     max_o = cur_o;
                 cur_x = 0;
             }
